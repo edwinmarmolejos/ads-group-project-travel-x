@@ -7,9 +7,9 @@ Our algorithm is able to carry out the following task:
 # Installation
 
 - Python programming language 
-- Download each city's csv file (can be found in the repository)
+- Download each city's csv file (using the first part of the code inside the file travelx.py)
 
-After obtaining all of the csv files for each city and importing them into Python, open the file titled travelx.py and execute the program.
+Open the file titled travelx.py, download the information for each city and execute the program.
 
 # Usage
 After the user enters the program they will be asked two give the algorithm two inputs:
