@@ -7,14 +7,15 @@ Our algorithm is able to carry out the following task:
 # Installation
 
 - Python programming language 
-- Download each city's csv file (using the first part of the code inside the file travelx.py)
+- Download each city's csv file (can be found in the repository)
 
-Open the file titled travelx.py, download the information for each city and execute the program.
+After downloading each city's information through csv file and importing it into Python, open the file travelx.py and run the program.
 
 # Usage
 After the user enters the program they will be asked two give the algorithm two inputs:
 - **Input #1**: What city would you like to visit?
 - **Input #2**: How many days will you stay?
+- **Input #3**: How many hours per day will you like to spend doing tourism?
 - **Output**: The Optimized Itinerary for the (Input #2) day(s) in (Input #1) is the following:
 
 Then a list of activities will be presented to the user which they should follow in order to optimize their trip.
@@ -26,6 +27,7 @@ Then a list of activities will be presented to the user which they should follow
 
 # Future additions to the code
 - We would like to add another constraint to the algorithm by considering the user's budget in relation to the cost of each attraction.
+- We would like to integrate the data sets for each city and allow users to run the program without needing to download the csv file for each city separately.
 
 # Credits
   Edwin Marmolejos,
