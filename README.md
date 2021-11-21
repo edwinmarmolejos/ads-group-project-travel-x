@@ -12,7 +12,7 @@ Our algorithm is able to carry out the following task:
 After downloading each city's information through csv file and importing it into Python, open the file travelx.py and run the program.
 
 # Usage
-After the user enters the program they will be asked two give the algorithm two inputs:
+After the user enters the program they will be asked two give the algorithm three inputs:
 - **Input #1**: What city would you like to visit?
 - **Input #2**: How many days will you stay?
 - **Input #3**: How many hours per day will you like to spend doing tourism?
