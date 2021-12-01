@@ -80,9 +80,16 @@ If the user enters no, the algorithm will respond, "TRAVELX thanks you for using
 - From this csv, we used **lists** as data structures to store all of the cities' information (attractions, ratings of these attractions, and duration of these attractions, cost).
 
 # Future additions to the code
-- A program export the data automatically from travel reccommendation engines. This will make the 
+- A program export the data automatically from travel reccommendation engines.
+- Travel length, which is currently set to 10 days, should be lengthier. 
+- Travelers with some long-duration activities may not be satisfied with the service. 
+- Implement activities that, if maximized, will cover the whole iteration days of the voyagers.
+- Implementation of costs inside the attractions. 
+- Increment number of cities available for customers to visit
+- Reservations and suggestions of restaurants and hotels. 
+- Finally, we would also develop the loyalty program. This would mean some travelers will be assigned “secret locations”.
 
-# Credits
+
   Edwin Marmolejos,
   Sebastian Vasquez,
   Arturo Camarena,
