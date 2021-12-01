@@ -6,10 +6,12 @@ Our algorithm is able to carry out the following task:
 
 # Installation
 
-- Python programming language 
+- Python programming language (version 3.9)
+- Libraries: In order for the program to run the user needs to download three libraries pandas, os and random.
+
 - Download data.csv file (can be found in the repository)
 
-After downloading each city's information through csv file and importing it into Python, open the file travelx.py and run the program.
+After downloading and importing each city's information via csv file into Python, import the libraries and open the file travelx.py to execute the application.
 
 # Data Description
 - Our data set includes 9 cities, each with 30 attractions, as well as the category, duration, rating, and cost of each attraction.
@@ -22,7 +24,7 @@ The cities and categories of attractions included in this data are listed below:
 
 
 # User Journey
-After the user enters the program they will be asked two give the algorithm some inputs:
+After the user enters the program they will be asked to give the algorithm some inputs:
 1. User is welcomed "Hello welcome to TRAVELX , the perfect Itinerary Optimization App!"
 
 2. A list of all the possible destinations is presented.
@@ -35,7 +37,7 @@ Right travel itinerary for you!"
 - **Input #2**: Would you like to tells us about your preferences? (yes or no)
 
 If the user enters yes, the algorithm will ask the user to rate each category of attraction on a scale of 0 to 5, and it will then proceed to **Input #3**.
-If the user enters no, they will proceed to **Input 3** directly.
+If the user enters no, they will proceed to **Input #3** directly.
 
 - **Input #3**: How many days will you stay? (Algorithm can only accept trips of less than 10 days)
 - **Input #4**: How many hours per day will you like to spend doing tourism? (The algorithm can only accept times between 6 and 10 hours)
