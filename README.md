@@ -39,7 +39,7 @@ If the user enters yes, the algorithm will ask the user to rate each category of
 If the user enters no, they will proceed to **Input #3** directly.
 
 - **Input #3**: How many days will you stay? (Algorithm can only accept trips of less than 10 days)
-- **Input #4**: How many hours per day will you like to spend doing tourism? (The algorithm can only accept times between 6 and 10 hours)
+- **Input #4**: How many hours per day will you like to spend doing tourism? (Algorithm can only accept times between 6 and 10 hours)
 - **Input #5**: What is your budget(€)?
 - **Final Output #1**: The algorithm will generate the itinerary that maximizes rating; the result will be divided by day and include all of the attractions for that day, as well as the total time and cost each day.
 - **Final Output #2**: The algorithm outputs the average rating, total cost, and average amount of hours of tourism each day for the whole trip.
