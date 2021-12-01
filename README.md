@@ -40,8 +40,30 @@ If the user enters yes, the algorithm will ask the user to rate each category of
 If the user enters no, they will proceed to **Input #3** directly.
 
 - **Input #3**: How many days will you stay? (Algorithm can only accept trips of less than 10 days)
-- **Input #4**: How many hours per day will you like to spend doing tourism? (Algorithm can only accept times between 6 and 10 hours)
-- **Input #5**: What is your budget(€)?
+- **Input #4**: How many hours per day will you like to spend doing tourism? (Algorithm can only accept times between 0 and 16 hours). Even though it 
+    recommends from 6 to 10 hours.
+- **Input #5**: Will you use an hotel? (Yes or No)? 
+
+If the user enters no, they will proceed directly to input 6.
+If the user enters yes, it will first display the following message:
+  "TRAVELX cannot book you an Hotel. However, we can account for the average price of your Hotel
+  
+  Here at TRAVELX we have the following assumptions of hotel stars
+  and their daily average price
+  
+  -1 star hotels have an average price of 45
+  -2 stars hotels have an average price of 47
+  -3 stars hotels have an average price of 55
+  -4 stars hotels have an average price of 74
+  -5 stars hotels have an average price of 182"
+  Important to highlight this Average Daily Rate (ADR) is taken from https://www.statista.com/statistics/750602/hotel-adr-in-spain-by-star-rating/
+  
+- **Input #5.1**: Write the number of stars that will have the hotel that you will use to accommodate your trip
+This input only runs if you select that you will use an hotel. It then takes ADR for your hotel and calculates your total hotel cost.
+- **Input #6**: What is your budget(€)?
+Here if your budget is lower than your total hotel cost. It will make the user repeat the input 5 or input 6 (user choice). 
+This will repeat until the the user changes the hotel or the budget and the budget covers at least the total hotel cost.
+
 - **Final Output #1**: The algorithm will generate the itinerary that maximizes rating; the result will be divided by day and include all of the attractions for that day, as well as the total time and cost each day.
 - **Final Output #2**: The algorithm outputs the average rating, total cost, and average amount of hours of tourism each day for the whole trip.
 - **Input #6**: The user is prompted if he wants to run the program again.
