@@ -1,4 +1,3 @@
-
 import pandas as pd
 import os
 import random
@@ -6,8 +5,7 @@ import random
 def itinerary_optimization(W, wt, val, n, attractions, cost, cost_constraint):
     K = [[0 for w in range(W + 1)]
          for i in range(n + 1)]
-    # Build table K[][] in bottom
-    # up manner
+
     for i in range(n + 1):
         for w in range(W + 1):
             if i == 0 or w == 0:
@@ -34,22 +32,24 @@ def itinerary_optimization(W, wt, val, n, attractions, cost, cost_constraint):
 
                 K[i][w] = value
 
-    # stores the result of Knapsack
     res = K[n][W][1]
+
 
     filtered_K = []
 
-    for i in range(n + 1):  # removes itineraries which have a higher cost than the constraint
+    for i in range(n + 1):
         for w in range(W + 1):
             if K[i][w][2] <= cost_constraint:
                 filtered_K.append(K[i][w])
 
-    filtered_K = set(filtered_K)  # eliminate duplicates
 
-    filtered_K2 = []  # removes itineraries which are empty
+    filtered_K = set(filtered_K)
+
+    filtered_K2 = []
     for i in filtered_K:
         if i[0] != 0.0 or i[2] != 0.0:
             filtered_K2.append(i)
+
 
     filtered_K2 = sorted(filtered_K2, key=lambda tup: tup[0], reverse=True)
 
@@ -72,7 +72,7 @@ def filter_adjust_data(city_input, travel):
     choices = ['yes', 'no']
     error_msg = "Invalid input. Try again. Answer 'Yes' or 'No"
     error_msg = (color.RED + color.BOLD + error_msg + color.END)
-    question = "Would you like to tells us about your preferences? (yes or no)"
+    question = "Would you like to tells us about your preferences? (yes or no) "
 
     choice = get_choice(choices, question, error_msg)
 
@@ -165,7 +165,7 @@ def filter_adjust_data(city_input, travel):
 
 def read_data_city(csv_name):
     infileName = csv_name
-    infile = open(infileName, "r")  # data
+    infile = open(infileName, "r")
     attractions = []
     values = []
     weights = []
@@ -298,8 +298,9 @@ def main_division_day(hours_constraint, days_constraint, hours_list):
 
         final_itinerary = new_list
         count = count + 1
-        if count > 1000:
+        if count > 100000:
             final_itinerary = 0
+            print("ALERTTTTT")
             break
 
     return final_itinerary, per_day
@@ -327,6 +328,15 @@ class color:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     END = '\033[0m'
+
+def add_hotel_list(daylist, maxlen, hotel_price):
+    daylist = tuple(daylist)
+    hotel_item = tuple([('Hotel'.ljust(maxlen), 0, hotel_price)])
+    daylist = daylist + hotel_item
+
+    return daylist
+
+
 
 
 def main():
@@ -370,7 +380,7 @@ def main():
     while True:
         try:
             hours_per_day = int(input("How many hours per day will you like to spend doing tourism? "))
-            while int(hours_per_day) > 16 or int(hours_per_day) < 0:
+            while int(hours_per_day) > 16 or int(hours_per_day) <= 0:
                 if int(hours_per_day) > 16:
                     print("- Dont you think this is a but too much? Try again with less hours, please!")
                     string = (travel + " advises you to choose between 6 and 10 hours")
@@ -380,18 +390,76 @@ def main():
                     msg = "Cannot input negative values! Try again"
                     msg = (color.RED + msg + color.END)
                     print(msg)
+                if int(hours_per_day) == 0:
+                    msg = "Cannot input 0 as a value! Try again"
+                    msg = (color.RED + msg + color.END)
+                    print(msg)
                 hours_per_day = int(input("How many hours per day will you like to spend doing tourism? "))
             break
         except ValueError:
             print(valid_int_msg)
     hours = days_constraint * hours_per_day
 
+    need_hotel_choices = ['yes','no']
+    need_hotel_ques = "Will you use an hotel? (Yes or No) "
+    error_msg = "Invalid input. Try again. Answer 'Yes' or 'No"
+    error_msg = (color.RED + color.BOLD + error_msg + color.END)
+    need_hotel = get_choice(need_hotel_choices,need_hotel_ques,error_msg  )
+    if need_hotel == "yes":
+        need_hotel = 1
+    if need_hotel == "no":
+        need_hotel = 0
+
+
+
+
+
+
+    hotel_price = 0
+    question_hotel = "Write the number of stars that will have the hotel that\n" \
+                     " you will use to accommodate your trip "
+    hotel_choice = ["5", "4", "3", "2", "1"]
+
+    n = len(attractions)
+
+    if need_hotel == 1:
+        hotel_price = [45, 47, 55, 74, 182]
+        print()
+        print(travel,"cannot book you an Hotel. However, we can account for\n"
+                     "the average price of your Hotel\n")
+
+        print("Here at", travel,"we have the following assumptions of hotel stars\n"
+                                "and their daily average price \n")
+        for i in range(len(hotel_price)):
+            if i == 0:
+                print((i + 1), "star hotels have an average price of", hotel_price[i])
+
+            else:
+                print((i+1),"stars hotels have an average price of",hotel_price[i])
+
+
+
+
+        stars_choice = get_choice(hotel_choice,question_hotel, "Wrong. Try again")
+
+        stars_choice = int(stars_choice)
+
+
+
+        hotel_price = hotel_price[stars_choice - 1]
+
+
     while True:
         try:
             cost_constraint = float(input("What is your budget (€) "))
-            while float(cost_constraint) < 0:
+            while float(cost_constraint) < 44:
                 if float(cost_constraint) < 0:
                     msg = "Cannot input negative values! Try again"
+                    msg = (color.RED + msg + color.END)
+                    print(msg)
+
+                if float(cost_constraint) < 44 and float(cost_constraint) > 0 and need_hotel == 1:
+                    msg = "Your budget doesnt satisfy any possible hotel stays"
                     msg = (color.RED + msg + color.END)
                     print(msg)
                 cost_constraint = float(input("What is your budget (€) "))
@@ -399,16 +467,75 @@ def main():
         except ValueError:
             print(valid_int_msg)
 
-    n = len(attractions)
+    total_hotel_cost = hotel_price * days_constraint
+    cost_contraint_attrac = cost_constraint-total_hotel_cost
+    total_cost_constraint = cost_constraint + total_hotel_cost
+    print()
 
-    res, filtered_K = itinerary_optimization(hours, weights, values, n, attractions, cost, cost_constraint)
-    filtered_K_sorted = sorted(filtered_K, key=lambda tup: tup[0], reverse=True)  # sorted by rating in descending
+
+    if cost_contraint_attrac < 0:
+        print("The total hotel cost is greater than your budget")
+        print("Please input a new hotel category or new budget")
+        choices = ["hotel", "budget"]
+        question = "Which one do you wish to change (hotel) or (budget)"
+        error = "Error"
+        choice = get_choice(choices,question,error )
+        if choice == "hotel":
+            while cost_contraint_attrac < 0:
+                stars_choice = get_choice(hotel_choice, question_hotel, "Wrong.try again")
+                stars_choice = int(stars_choice)
+                print("type:", type(stars_choice))
+                print("stars_choice",stars_choice)
+                hotel_price2 = [45, 47, 55, 74, 182]
+                hotel_price = hotel_price2[stars_choice - 1]
+                total_hotel_cost = hotel_price * days_constraint
+                cost_contraint_attrac = cost_constraint - total_hotel_cost
+                if cost_contraint_attrac < 0:
+                    msg = "Error. Total hotel cost still is greater than your budget. TryAgain"
+                    msg = (color.RED + color.BOLD + msg + color.END)
+                    print(msg)
+
+
+
+
+        if choice == "budget":
+            while True:
+                try:
+                    cost_constraint = float(input("What is your new budget (€) "))
+                    cost_contraint_attrac = cost_constraint - total_hotel_cost
+                    print("total_hotel_cost",total_hotel_cost)
+                    while cost_contraint_attrac < 0:
+                        if float(cost_constraint) < 0:
+                            msg = "Cannot input negative values! Try again"
+                            msg = (color.RED + msg + color.END)
+                            print(msg)
+
+
+                        if cost_contraint_attrac < 0:
+                            msg = "With that budget you can't satisfy any hotel"
+                            msg = (color.RED + msg + color.END)
+                            print(msg)
+
+
+                        cost_constraint = float(input("What is your budget (€) "))
+                        cost_contraint_attrac = cost_constraint - total_hotel_cost
+                        print("cost_contraint_attrac",cost_contraint_attrac)
+                    break
+                except ValueError:
+                    print(valid_int_msg)
+
+
+
+
+    res, filtered_K = itinerary_optimization(hours, weights, values, n, attractions, cost, cost_contraint_attrac)
+    filtered_K_sorted = sorted(filtered_K, key=lambda tup: tup[0], reverse=True)
 
     itinerary = filtered_K_sorted[0]
 
     itinerary2 = itinerary[1]
 
     itinerary3 = itinerary2.split(";")
+
     itinerary3 = list(filter(None, itinerary3))
 
     hours_itinerary = itinerary_attrac_hours(csv_name, itinerary3)
@@ -437,10 +564,17 @@ def main():
         print_iti = itinerary4
 
     if final_iti == 0 and len(order_iti) != days_constraint:
-        text = (color.BOLD + color.RED + "YOUR ITINERARY COULDNT BE FITTED IN " + str(days_constraint) +
+        text = (color.BOLD + color.RED + "YOUR ITINERARY TO MAXIMIZE RATING COULDNT BE FITTED IN " + str(days_constraint) +
                 " DAYS" + color.END)
         print(text)
-        print()
+        if days_constraint >= len(order_iti):
+            tex2 = (color.BOLD + "HOWEVER, TRAVELX COULD DO IT IN " + str(len(order_iti)) +
+                " DAYS" + color.END)
+            print(tex2)
+
+
+
+
     print()
     iti_text = (color.BOLD + color.GREEN + "Itinerary to Maximize Rating" + color.END)
     print(iti_text)
@@ -460,16 +594,18 @@ def main():
         number_text = str(i + 1)
         number_text = (color.BOLD + number_text + color.END)
 
-        print(day_text, number_text)
-        # print("first:", first, "total:", total)
 
         day_list = print_iti[first:total]
-        # print("daylis:", day_list)
+        if need_hotel == 1:
+            day_list = add_hotel_list(day_list, maxlen, hotel_price)
+
+
+
         first = total
         for i in range(len(day_list)):
 
             if i == (len(day_list) - 1):
-                last_line = ' {} {}  {}hrs    ${}'.format("-", day_list[i][0], day_list[i][1], round(day_list[i][2], 2))
+                last_line = ' {} {}  {}hrs    ${}'.format("-", day_list[i][0], day_list[i][1], round(day_list[i][2],2))
                 last_line = (color.UNDERLINE + last_line + color.END)
                 print(last_line)
                 break
@@ -491,7 +627,11 @@ def main():
     print(" - Average Rating of: ".ljust(maxlen + 3), "", avg_rtg)
     cost_text = "- Total Cost of:".ljust(maxlen + 2)
     hours_text = "- Average hours per day of tourism are:".ljust(maxlen + 3)
-    print(" {} {}{}".format(cost_text, "$", round(sum(cost_itinerary_list), 2)))
+    if need_hotel ==1:
+        print(" {} {}{}".format(cost_text, "$", round(sum(cost_itinerary_list), 2) + (hotel_price*days_constraint)))
+
+    if need_hotel ==0:
+        print(" {} {}{}".format(cost_text, "$", round(sum(cost_itinerary_list), 2)))
     print(" {} {} {}".format(hours_text, round(sum(hours_itinerary) / days_constraint, 2), "hrs"))
     print()
     file_remove(csv_name)
@@ -505,7 +645,7 @@ def main():
     preferences_txt = (color.PURPLE + color.BOLD + 'preferences' + color.END)
     print("You can change " + cities_txt + " or even change your " + preferences_txt + ".")
 
-    question = "Wish to repeat? (yes or no)"
+    question = "Wish to repeat? (yes or no) "
     answer_list = ['yes', 'no']
     error_msg = "Try Again. Answer 'Yes' or 'No'"
     error_msg = (color.RED + color.BOLD + error_msg + color.END)
@@ -525,3 +665,4 @@ def goodbye_msg(travel):
 
 
 goodbye_msg((color.BLUE + color.BOLD + 'TRAVELX' + color.END))
+
