@@ -89,7 +89,7 @@ If the user enters no, the algorithm will respond, "TRAVELX thanks you for using
 - Reservations and suggestions of restaurants and hotels. 
 - Finally, we would also develop the loyalty program. This would mean some travelers will be assigned “secret locations”.
 
-
+# Credits
   Edwin Marmolejos,
   Sebastian Vasquez,
   Arturo Camarena,
