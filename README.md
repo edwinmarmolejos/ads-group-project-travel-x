@@ -24,14 +24,13 @@ The cities and categories of attractions included in this data are listed below:
 
 
 # User Journey
-After the user enters the program they will be asked to give the algorithm some inputs:
-1. User is welcomed "Hello welcome to TRAVELX , the perfect Itinerary Optimization App!"
+User is welcomed "Hello welcome to TRAVELX , the perfect Itinerary Optimization App!"
 
-2. A list of all the possible destinations is presented.
+A list of all the possible destinations is presented.
 
 - **Input #1**: What city would you like to visit?
 
-3. Algorithm prints "TRAVELX would like to ask you about your preferences to make the 
+Algorithm prints "TRAVELX would like to ask you about your preferences to make the 
 Right travel itinerary for you!" 
 
 - **Input #2**: Would you like to tells us about your preferences? (yes or no)
