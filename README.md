@@ -64,7 +64,7 @@ This input only runs if you select that you will use an hotel. It then takes ADR
 Here if your budget is lower than your total hotel cost. It will make the user repeat the input 5 or input 6 (user choice). 
 This will repeat until the the user changes the hotel or the budget and the budget covers at least the total hotel cost.
 
-- **Final Output #1**: The algorithm will generate the itinerary that maximizes rating; the result will be divided by day and include all of the attractions for that day, as well as the total time and cost each day.
+- **Final Output #1**: The algorithm will generate the itinerary that maximizes rating; the result will be divided by day and include all of the attractions for that day (including the hotel), as well as the total time and cost each day.
 - **Final Output #2**: The algorithm outputs the average rating, total cost, and average amount of hours of tourism each day for the whole trip.
 - **Input #6**: The user is prompted if he wants to run the program again.
 
@@ -74,12 +74,13 @@ If the user enters no, the algorithm will respond, "TRAVELX thanks you for using
 
 # Methods and Data Structures Used
 
-- We used the **dynammic programming** as our programming method which maximized value (in this case ratings) under the constraint of the weight (which in this cases are the days of the trip and how much time every attraction takes).
-- We used **lists** as data structures to store all of the cities' information (attractions, ratings of these attractions, and duration of these attractions).
+- We used the **dynammic programming** as our programming method which through tabulation helps maximize a value (in this case ratings) under the constraint of the weight (which in this cases are the days of the trip and how much time every attraction takes).
+- 
+- We first used dataframe from pandas to filter the city that the user wanted and then from that dataframe create a csv. 
+- From this csv, we used **lists** as data structures to store all of the cities' information (attractions, ratings of these attractions, and duration of these attractions, cost).
 
 # Future additions to the code
-- We would like to add another constraint to the algorithm by considering the user's budget in relation to the cost of each attraction.
-- We would like to integrate the data sets for each city and allow users to run the program without needing to download the csv file for each city separately.
+- A program export the data automatically from travel reccommendation engines. This will make the 
 
 # Credits
   Edwin Marmolejos,
