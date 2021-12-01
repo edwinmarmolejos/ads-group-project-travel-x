@@ -14,9 +14,11 @@ After downloading each city's information through csv file and importing it into
 # Data Description
 - Our data set includes 9 cities, each with 30 attractions, as well as the category, duration, rating, and cost of each attraction.
 
+Source: The data was collected from Tripadvisor https://www.tripadvisor.com/ .
+
 The cities and categories of attractions included in this data are listed below:
 
-![Alt Text](/Users/edwinmarmolejos/Desktop)
+<img width="321" alt="Data Summary" src="https://user-images.githubusercontent.com/94702966/144243252-2125e70e-3008-4620-bff8-9a8c7b1e1806.png">
 
 
 # Usage
