@@ -46,7 +46,7 @@ If the user enters no, they will proceed to **Input #3** directly.
 
 If the user enters no, they will proceed directly to input 6.
 If the user enters yes, it will first display the following message:
-  "TRAVELX cannot book you an Hotel. However, we can account for the average price of your Hotel
+  TRAVELX cannot book you an Hotel. However, we can account for the average price of your Hotel
   
   Here at TRAVELX we have the following assumptions of hotel stars
   and their daily average price
@@ -55,7 +55,7 @@ If the user enters yes, it will first display the following message:
   -2 stars hotels have an average price of 47
   -3 stars hotels have an average price of 55
   -4 stars hotels have an average price of 74
-  -5 stars hotels have an average price of 182"
+  -5 stars hotels have an average price of 182
   Important to highlight this Average Daily Rate (ADR) is taken from https://www.statista.com/statistics/750602/hotel-adr-in-spain-by-star-rating/
   
 - **Input #5.1**: Write the number of stars that will have the hotel that you will use to accommodate your trip
