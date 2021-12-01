@@ -1,8 +1,9 @@
 # TravelX
-Algorithm that allows user to optimize their trip.
+An Algorithm that allows the user to optimize their trip.
 
 Our algorithm is able to carry out the following task:
-1. It enables users to optimize their vacation based on the city they select and the number of days they wish to spend.
+- It enables users to optimize their vacation based on the city they select and the number of days and hours they wish to spend doing tourism.
+- All of these while taking into account the budget the user selects and an approximation of their hotel bill.
 
 # Installation
 
