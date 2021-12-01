@@ -7,9 +7,17 @@ Our algorithm is able to carry out the following task:
 # Installation
 
 - Python programming language 
-- Download each city's csv file (can be found in the repository)
+- Download data.csv file (can be found in the repository)
 
 After downloading each city's information through csv file and importing it into Python, open the file travelx.py and run the program.
+
+# Data Description
+- Our data set includes 9 cities, each with 30 attractions, as well as the category, duration, rating, and cost of each attraction.
+
+The cities and categories of attractions included in this data are listed below:
+
+![Alt Text](/Users/edwinmarmolejos/Desktop)
+
 
 # Usage
 After the user enters the program they will be asked two give the algorithm three inputs:
